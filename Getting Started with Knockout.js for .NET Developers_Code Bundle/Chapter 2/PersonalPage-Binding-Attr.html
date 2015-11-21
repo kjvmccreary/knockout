@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+John's favorite site is <a data-bind="attr: { href: favoriteUrl }">PacktPub</a>.
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  favoriteUrl: "http://www.packtpub.com"
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.favoriteUrl = ko.observable(person.favoriteUrl);
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

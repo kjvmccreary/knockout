@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+<div data-bind="visible: favoriteSite().length > 0">
+John's favorite site is <span data-bind="text: favoriteSite"></span>.
+</div>
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  favoriteSite: "PacktPub"
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.favoriteSite = ko.observable(person.favoriteSite);
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

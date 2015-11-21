@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+<div>
+  John's age is <span data-bind="text: age"></span>.
+  <form data-bind="submit: growOld">
+    <button type="submit">Grow old</button>
+  </form>
+</div>
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  age: 30
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.age = ko.observable(person.age);
+  self.growOld = function() {
+    var previousAge = self.age();
+    self.age(previousAge + 1);
+  }
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello world on Knockout.js</title>
+  </head>
+<body>
+<span data-bind="text: message"></span>
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+  var viewModel = {
+    message: ko.observable()
+  };
+  viewModel.message.extend({ rateLimit: 100 });
+  viewModel.message("Hello world!");
+  ko.applyBindings(viewModel);
+</script>
+</html>

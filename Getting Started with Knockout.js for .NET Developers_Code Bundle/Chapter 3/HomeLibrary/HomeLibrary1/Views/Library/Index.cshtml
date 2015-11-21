@@ -1,0 +1,30 @@
+﻿@model HomeLibrary1.Models.LibraryModel
+@{ ViewBag.Title = "Library"; }
+<div class="container">
+  <h2 style="text-align: center">@Model.Name</h2>
+  <table class="table table-bordered table-striped table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var book in Model.GetBooks())
+      {
+        <tr>
+          <td>@book.Title</td>
+          <td>@book.Author</td>
+          <td>@book.Year</td>
+          <td>
+            @Html.ActionLink("Edit", "Edit", new { id = book.Id }, new { @class = "btn btn-primary btn-xs" })
+            @Html.ActionLink("Remove", "Remove", new { id = book.Id }, new { @class = "btn btn-primary btn-xs" })
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  @Html.ActionLink("Add new book", "Add", null, new { @class = "btn btn-primary" })
+</div>

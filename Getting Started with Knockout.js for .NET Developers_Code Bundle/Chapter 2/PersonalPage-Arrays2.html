@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+<form data-bind="submit: addChild">
+  New Child:
+  <input data-bind='value: newChild, valueUpdate: "afterkeydown"' />
+  <button type="submit" data-bind="enable: addChildEnabled">Add</button>
+  <p>Person's children:</p>
+  <select multiple="multiple" size="7" data-bind="options: children"></select>
+</form>
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  children: ["Jonnie", "Jane", "Richard", "Mary"]
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.children = ko.observableArray(person.children);
+  self.newChild = ko.observable("");
+  self.addChildEnabled = ko.computed(function() {
+    return self.newChild().length > 0;
+  });
+  self.addChild = function() {
+    if (self.addChildEnabled()) {
+      self.children.push(self.newChild());
+      self.newChild("");
+    }
+  };
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

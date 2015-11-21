@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+<!-- ko with: wife -->
+Wife's first name: <span data-bind="text: firstName"></span>.<br />
+Wife's last name: <span data-bind="text: lastName"></span>.
+<!-- /ko -->
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  wife: {
+    firstName: "Jessica",
+    lastName: "Doe"
+  }
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.wife = ko.observable(person.wife)
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

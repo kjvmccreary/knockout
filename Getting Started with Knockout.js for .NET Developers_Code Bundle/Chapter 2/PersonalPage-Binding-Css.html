@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+  <style type="text/css">
+    .redStyle {
+      color: red;
+    }
+    .greenStyle {
+      color: green;
+    }
+  </style>
+<body>
+
+<div data-bind="css: { redStyle: favoriteСolor() == 'red', greenStyle: favoriteСolor() == 'green' }">
+John's favorite color is <span data-bind="text: favoriteСolor"></span>.
+</div>
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  favoriteСolor: "red"
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.favoriteСolor = ko.observable(person.favoriteСolor);
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

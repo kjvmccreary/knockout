@@ -1,0 +1,26 @@
+<!-- Simple binding; message is ViewModel property -->
+<span data-bind="text: message"></span>
+<!-- Related bindings (valueUpdate is a parameter for value); name is ViewModel property -->
+<input data-bind="value: name, valueUpdate: 'afterkeydown'" />
+<!-- Unrelated bindings; name, isNameEnable are ViewModel property -->
+<input data-bind="value: name, enable: isNameEnable" />
+<!-- Variable bindings (usually a property of the current view model); shouldShowMessage is ViewModel property-->
+<div data-bind="visible: shouldShowMessage">...</div>
+<!-- Comparison and conditional bindings; price is ViewModel function -->
+<span data-bind="text: price() > 50 ? 'expensive' : 'cheap'"></span>
+<!-- Function call and comparison bindings; cellphoneNumber is ViewModel function -->
+<button data-bind="enable: parseAreaCode(cellphoneNumber()) != '555'">...</button>
+<!-- Function expression bindings; myFunction is ViewModel function -->
+<div data-bind="click: function (data) { myFunction('param1', data) }">...</div>
+<!-- Object literal bindings (with unquoted and quoted property names) -->
+<div data-bind="with: {emotion: 'happy', 'facial-expression': 'smile'}">...</div>
+<!-- Bindings without spaces -->
+<select data-bind="options:availableCountries,optionsText:'countryName',value:selectedCountry,optionsCaption:'Choose...'"></select>
+<!-- Bindings with newlines -->
+<select data-bind="
+    options: availableCountries,
+    optionsText: 'countryName',
+    value: selectedCountry,
+    optionsCaption: 'Choose...'"></select>
+<!-- Bindings with skipped value -->
+<span data-bind="text">Text that will be cleared when bindings are applied.</span>

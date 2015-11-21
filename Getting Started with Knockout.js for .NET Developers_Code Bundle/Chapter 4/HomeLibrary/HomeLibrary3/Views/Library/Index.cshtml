@@ -1,0 +1,38 @@
+﻿@using PerpetuumSoft.Knockout
+@model HomeLibrary3.Models.LibraryModel
+
+@{
+  ViewBag.Title = "HomeLibrary";
+  var ko = Html.CreateKnockoutContext();
+}
+
+<div class="container">
+  <h2 style="text-align: center">@ko.Html.Span(m => m.Name)</h2>
+  <table class="table table-bordered table-striped table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @using (var book = ko.Foreach(m => m.Books))
+      {
+        <tr>
+          <td>@book.Html.Span(m => m.Title)</td>
+          <td>@book.Html.Span(m => m.Author)</td>
+          <td>@book.Html.Span(m => m.Year)</td>
+          <td>
+            <a href="#" @ko.Bind.Click("EditRedirect", "Library", new { index = book.GetIndex() }) class="btn btn-primary btn-xs">Edit</a>
+            <a href="#" @ko.Bind.Click("Remove", "Library", new { index = book.GetIndex() }) class="btn btn-primary btn-xs">Remove</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <a href="#" @ko.Bind.Click("Add", "Library") class="btn btn-primary">Add new book</a>
+</div>
+
+@ko.Apply(Model)

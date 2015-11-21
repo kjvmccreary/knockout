@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal page</title>
+  </head>
+<body>
+
+<span data-bind="text: firstName"></span> is <span data-bind="text: age() >= 18 ? 'adult' : 'young'"></span> person.
+
+<script type="text/javascript" src="knockout-3.1.0.js"></script>
+<script type="text/javascript">
+// Model
+var person = {
+  firstName: "John",
+  age: 30
+};
+// ViewModel
+var personViewModel = function() {
+  var self = this;
+  self.firstName = ko.observable(person.firstName);
+  self.age = ko.observable(person.age);
+};
+// Apply
+ko.applyBindings(personViewModel);
+</script>
+</html>

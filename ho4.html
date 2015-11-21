@@ -11,6 +11,9 @@
             var viewModel = {
                 msg: ko.observable()
             };
+            viewModel.msg.subscribe(function(newValue) {
+                alert("New value = " + newValue);
+            });
             viewModel.msg("Hello World!!");
             ko.applyBindings(viewModel);
         </script>
