@@ -5,16 +5,18 @@
         <title>Hello World Example on Knockout.js</title>
     </head>
     <body>
-        <span data-bind="text:msg"></span>
+        <span data-bind="text:message"></span><br/>
+        <button data-bind="click: addExclamationMark">Add Exclamation mark</button>
         <script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
         <script type='application/javascript'>
             var viewModel = {
-                msg: ko.observable()
+                message: ko.observable(),
+                addExclamationMark : function() {
+                    this.message(this.message() + "!")
+                }
             };
-            viewModel.msg.subscribe(function(newValue) {
-                alert("New value = " + newValue);
-            });
-            viewModel.msg("Hello World!!");
+
+            viewModel.message("Hello World!!");
             ko.applyBindings(viewModel);
         </script>
     </body>

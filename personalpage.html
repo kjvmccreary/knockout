@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<span data-bind="text: firstName"></span>
+ is
+<span data-bind="text: age() >=18 ? 'adult':'young'"></span> person.<br/>
+<span data-bind="html:about"></span><br/>
+John's favorite site is <a data-bind="attr:{href: favoriteUrl()}">Packt Pub</a><br/><br/>
+
+<div data-bind="visible: favoriteSite().length > 0">
+    His favorite site is <span data-bind="text:favoriteSite"></span>
+</div><br/>
+<form>
+    The first name is <input type="text" data-bind="value:firstName"/>.
+</form>
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
+<script type="text/javascript">
+    //Model
+    var person = {
+        firstName:"John",
+        age:30,
+        about: "John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>.",
+        favoriteUrl:"http://www.packtpub.com",
+        favoriteSite: "PacktPub"
+    };
+
+    //View Model
+    var PersonViewModel = function() {
+        var self = this;
+        self.firstName = ko.observable(person.firstName);
+        self.age = ko.observable(person.age);
+        self.about = ko.observable(person.about);
+        self.favoriteUrl = ko.observable(person.favoriteUrl);
+        self.favoriteSite = ko.observable(person.favoriteSite);
+    };
+
+    //Apply
+    ko.applyBindings(PersonViewModel);
+</script>
+
+</body>
+</html>
