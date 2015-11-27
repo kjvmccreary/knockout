@@ -17,6 +17,10 @@ John's favorite site is <a data-bind="attr:{href: favoriteUrl()}">Packt Pub</a><
 </div><br/>
 <form>
     The first name is <input type="text" data-bind="value:firstName"/>.
+</form><br/>
+John's age is <span data-bind="text:age"></span>
+<form data-bind="submit:growOld">
+    <button type="submit">Grow Old</button>
 </form>
 <script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
 <script type="text/javascript">
@@ -37,6 +41,10 @@ John's favorite site is <a data-bind="attr:{href: favoriteUrl()}">Packt Pub</a><
         self.about = ko.observable(person.about);
         self.favoriteUrl = ko.observable(person.favoriteUrl);
         self.favoriteSite = ko.observable(person.favoriteSite);
+        self.growOld = function() {
+            var previousAge = self.age();
+            self.age(previousAge + 1);
+        }
     };
 
     //Apply

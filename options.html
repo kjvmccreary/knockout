@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<form>
+    <select multiple = "multiple" data-bind="options:children,selectedOptions:selectedChildren"></select>
+</form>
+
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
+<script type="text/javascript">
+    //Model
+    var person = {
+        children: ["Jonnie","Jane","Richard","Mary"],
+        selectedChildren: ["Jonnie","Mary"]
+    };
+
+    //View Model
+    var PersonViewModel = function() {
+        var self = this;
+        self.children = person.children;
+        self.selectedChildren = person.selectedChildren;
+    };
+
+    //Apply
+    ko.applyBindings(PersonViewModel);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<table>
+    <thead>
+        <tr><th>First Name</th><th>Age</th></tr>
+    </thead>
+    <tbody>
+        <!-- ko foreach: children -->
+        <tr>
+            <td data-bind="text:firstName"></td>
+            <td data-bind="text:age"></td>
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</table>
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
+<script type="text/javascript">
+    //Model
+    var person = {
+        children: [
+            {firstName:"Jonnie",age:3},
+            {firstName:"Jane",age:5},
+            {firstName:"Richard",age:7},
+            {firstName:"Mary",age:9}
+        ]
+    };
+
+    //View Model
+    var PersonViewModel = function() {
+        var self = this;
+        self.children = person.children;
+    };
+
+    //Apply
+    ko.applyBindings(PersonViewModel);
+</script>
+
+</body>
+</html>

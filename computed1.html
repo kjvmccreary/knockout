@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    The first name is: <span data-bind="text:firstName"></span>.<br/>
+    The last name is: <span data-bind="text:lastName"></span>.
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
+<script type="text/javascript">
+    //Model
+    var person = {
+        firstName:"John",
+        lastName:"Doppe"
+    };
+
+    //View Model
+    var PersonViewModel = function() {
+        var self = this;
+        self.firstName = ko.observable(person.firstName);
+        self.lastName = ko.observable(person.lastName);
+    };
+
+    //Apply
+    ko.applyBindings(PersonViewModel);
+</script>
+
+</body>
+</html>
